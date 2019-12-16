@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Final Scheduler </title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    </head>
+    <body>
+        
+        <h1 class="container"> Add New Time Slot! </h1>
+        <!--20 points-->
+        <!--Date - Start Time - End Time -- Cancel Button  -- Add -->
+        
+        
+        <!--<div class="container">-->
+        <!--    <form action="/insertTimeSlot" method="post">-->
+            
+        <!--    Date: <input type="date" id="date" name="date"><br> <br>-->
+        <!--    Start time: <input type="time" id="startTime" name="startTime"><br> <br>-->
+        <!--    End time: <input type="time" id="endTime" name="endTime"><br> <br>-->
+            
+        <!--    <br><br>-->
+        <!--    <button type="button" onclick="javascript:window.close()">Cancel</button>-->
+        <!--    <input type="submit">-->
+        <!--    </form>-->
+        <!--</div>-->
+            
+            <!---->
+            <!--Use this one-->
+            <!---->
+        
+        <!--<div class="container">-->
+        <!--<form action="/insertTS" method="post">-->
+        <!--    <div class="form-group">-->
+        <!--        <label for="inputDate">Date:</label>-->
+        <!--        <input type="date" class="form-control" id="inputDate" aria-describedby="dateHelp">-->
+        <!--        <small id="dateHelp" class="form-text text-muted">What day would you like your new Time Slot?</small><br> <br>-->
+        <!--    </div>-->
+        <!--    <div class="form-group">-->
+        <!--        <label for="inputStartTime">Start Time:</label>-->
+        <!--        <input type="time" class="form-control" id="inputStartTime" aria-describedby="startHelp">-->
+        <!--        <small id="startHelp" class="form-text text-muted">At what time does your new Time Slot start?</small><br> <br>-->
+        <!--    </div>-->
+        <!--    <div class="form-group">-->
+        <!--        <label for="inputEndTime">End Time:</label>-->
+        <!--        <input type="time" class="form-control" id="inputEndTime" aria-describedby="endHelp">-->
+        <!--        <small id="endHelp" class="form-text text-muted">At what time does your new Time Slot end?</small><br> <br>-->
+        <!--    </div>-->
+        <!--    <br><br>-->
+        <!--    <button type="button" onclick="javascript:window.close()">Cancel</button>-->
+        <!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+        <!--</form>-->
+        <!--</div>-->
+        
+            <!---->
+            <!--Use Above-->
+            <!---->
+            
+        <div class="container">
+        <form class="ajax_caller">
+            <div class="form-group">
+                <label for="inputDate">Date:</label>
+                <input type="date" class="form-control" id="inputDate" aria-describedby="dateHelp">
+                <small id="dateHelp" class="form-text text-muted">What day would you like your new Time Slot?</small><br> <br>
+            </div>
+            <div class="form-group">
+                <label for="inputStartTime">Start Time:</label>
+                <input type="time" class="form-control" id="inputStartTime" aria-describedby="startHelp">
+                <small id="startHelp" class="form-text text-muted">At what time does your new Time Slot start?</small><br> <br>
+            </div>
+            <div class="form-group">
+                <label for="inputEndTime">End Time:</label>
+                <input type="time" class="form-control" id="inputEndTime" aria-describedby="endHelp">
+                <small id="endHelp" class="form-text text-muted">At what time does your new Time Slot end?</small><br> <br>
+            </div>
+            <br><br>
+            <button type="button" onclick="javascript:window.close()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+        <script>
+            // click event
+            $(document).on('submit', 'form.ajax_caller', do_ajax_call)
+
+            function do_ajax_call (e) {
+                console.log("test");
+                e.preventDefault()
+                $.get('/insertTS', {data: 'inputDate, inputStartTime, inputEndTime'}, function (res) {
+                console.log('callback after your node function is done')
+                })
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </body>
+</html>

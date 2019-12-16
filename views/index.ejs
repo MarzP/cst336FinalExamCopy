@@ -1,0 +1,48 @@
+<% include partials/header.ejs %>
+        <!--Table-->
+       
+        <table class="container">
+            <tr id="table-header">
+                <td><strong>Date</strong></td>
+                <td><strong>Start Time</strong></td>
+                <td><strong>End Time</strong></td>
+                <td><strong>Booked By</strong></td>
+            </tr>
+            
+            <% timeSlots.forEach(function(timeSlot) { %>
+                <tr>
+                    <th><%= timeSlot.dateOfSlot %></th>
+                    <th><%= timeSlot.startTime %></th>
+                    <th><%= timeSlot.endTime %></th>
+                    <th><%= timeSlot.bookedByFirstName %> 
+                    <a id="delete" class="btn btn-outline-danger" href="/deleteTime" onclick="centeredPopup(this.href, 'myWindow', '800','450','yes');return false">Delete</a></th>
+                </tr>
+            <% }); %>
+            
+        </table>
+        <br><br>
+        
+        <div class="container"> 
+        
+        <!--Add Button-->
+        <p><a id="add" class="btn btn-outline-success" href="/addTime"
+      onclick="centeredPopup(this.href,'myWindow','800','450','yes');return false">Add new appointment!</a></p>
+        
+        
+        </div>
+        <br><br>
+        
+        <script>
+            var popupWindow = null;
+            
+            function centeredPopup(url, winName, w, h, scroll) {
+                LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
+                TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
+                settings =
+                    'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll + ',resizable'
+                popupWindow = window.open(url, winName, settings)
+            }
+        
+            </script>
+        
+    <% include partials/footer.ejs %>
